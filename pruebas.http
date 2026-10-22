@@ -1,0 +1,8 @@
+# Las pruebas de la API se hacen con Postman.
+# Importa el archivo:
+# API_CRM_Justificaciones_Postman.json
+#
+# Antes de probar:
+# 1. Arranca Spring Boot.
+# 2. Comprueba que PostgreSQL está disponible.
+# 3. En Postman cambia idAlumno e idFalta si hace falta.

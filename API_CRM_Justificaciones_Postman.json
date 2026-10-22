@@ -1,0 +1,120 @@
+{
+  "info": {
+    "_postman_id": "b5c0c3a1-8c77-4d1e-9e2b-apicrm",
+    "name": "API CRM - Justificacion de faltas",
+    "description": "Coleccion para probar la API Spring Boot de justificacion de faltas.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "idAlumno",
+      "value": "1"
+    },
+    {
+      "key": "idFalta",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Crear justificacion",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fecha\": \"2026-10-22\",\n  \"tramoHorario\": \"09:00-10:00\",\n  \"motivo\": \"Cita médica\",\n  \"justificante\": \"justificante-medico.pdf\",\n  \"minutos\": 60\n}"
+        },
+        "url": "{{baseUrl}}/api/alumnos/{{idAlumno}}/faltas"
+      }
+    },
+    {
+      "name": "Ver faltas del alumno",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/alumnos/{{idAlumno}}/faltas"
+      }
+    },
+    {
+      "name": "Ver resumen de faltas",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/alumnos/{{idAlumno}}/faltas/resumen"
+      }
+    },
+    {
+      "name": "Ver falta por id",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/faltas/{{idFalta}}"
+      }
+    },
+    {
+      "name": "Actualizar falta",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fecha\": \"2026-10-22\",\n  \"tramoHorario\": \"09:00-11:00\",\n  \"motivo\": \"Cita médica\",\n  \"justificante\": \"justificante-medico.pdf\",\n  \"minutos\": 120\n}"
+        },
+        "url": "{{baseUrl}}/api/faltas/{{idFalta}}"
+      }
+    },
+    {
+      "name": "Aceptar justificacion",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"estado\": \"JUSTIFICADA\"}"
+        },
+        "url": "{{baseUrl}}/api/faltas/{{idFalta}}/estado"
+      }
+    },
+    {
+      "name": "Rechazar justificacion",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"estado\": \"RECHAZADA\"}"
+        },
+        "url": "{{baseUrl}}/api/faltas/{{idFalta}}/estado"
+      }
+    },
+    {
+      "name": "Eliminar falta",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/faltas/{{idFalta}}"
+      }
+    }
+  ]
+}
